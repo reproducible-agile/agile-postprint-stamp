@@ -219,13 +219,6 @@
       "Repository": "CRAN",
       "Hash": "2ebd34a38f4248281096cc723535b66d"
     },
-    "pdftools": {
-      "Package": "pdftools",
-      "Version": "2.3.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "c395e2a35e1c2a4c9ba5424cd7cd26c7"
-    },
     "pkgbuild": {
       "Package": "pkgbuild",
       "Version": "1.0.8",
