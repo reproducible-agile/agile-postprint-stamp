@@ -157,7 +157,13 @@ get_agile_year <- function(url) {
 }
 
 qpdf_cli_overlay <- function(overlay, base, output) {
-  system2("qpdf",
+  if (!file.exists("qpdf.AppImage")) {
+    shiny::setProgress(0.7, "Retrieving qpdf AppImage")
+    download.file(url = "https://sourceforge.net/projects/qpdf/files/qpdf/10.0.1/qpdf-10.0.1-x86_64.AppImage/download",
+                  destfile = "qpdf.AppImage")
+    system2("chmod", "+x qpdf.AppImage")
+  }
+  system2(here::here("qpdf.AppImage"),
           args = c("--overlay", overlay, "--to=1", "--", base, output))
 }
 # qpdf_cli_overlay(overlay = overlay_pdf, base = paper_pdf, output = "test2.pdf")
