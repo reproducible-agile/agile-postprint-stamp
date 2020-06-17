@@ -25,6 +25,19 @@ The project's dependencies are pinned in the [`renv.lock`](https://rstudio.githu
 
 ## Deploy app - WORK IN PROGRESS
 
+### Heroku
+
+- Add configuration as per https://github.com/virtualstaticvoid/heroku-docker-r (https://github.com/virtualstaticvoid/heroku-buildpack-r is not good with system deps)
+  - `Aptfile`
+  - `Dockerfile`
+  - `heroku.yml`
+  - `run.R`
+- Create new app on Heroku
+- Connect app to GitHub
+- Deploy `heroku` main branch, automatically
+
+### Shinyapps.io
+
 Shinyapps currently does not have `qpdf`, and the package does not explose the required feature, see https://github.com/ropensci/qpdf/issues/11
 
 ```r
