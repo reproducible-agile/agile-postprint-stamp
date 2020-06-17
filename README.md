@@ -2,9 +2,13 @@
 
 [Shiny](https://shiny.rstudio.com/) application for adding a textbox to the first page of an AGILE short paper, so it can be uploaded to public preprint servers or institional repositories.
 
+<!--
 ## Use app online
 
 👉👉 **https://dnlnst.shinyapps.io/agile-postprint-stamp/** 👈👈
+-->
+
+<img src="agile-postprint-stamp.png" title="Application screenshot" width="50%" />
 
 ## Use app locally
 
@@ -12,13 +16,20 @@
 2. Open `app.R` in RStudio
 3. Click "Run App"
 
+```r
+git2r::clone("reproducible-agile/agile-postprint-stamp")
+shiny::runApp("agile-postprint-stamp")
+```
+
 The project's dependencies are pinned in the [`renv.lock`](https://rstudio.github.io/renv/articles/lockfile.html) file.
 
-## Deploy app
+## Deploy app - WORK IN PROGRESS
+
+Shinyapps currently does not have `qpdf`, and the package does not explose the required feature, see https://github.com/ropensci/qpdf/issues/11
 
 ```r
 library("rsconnect")
-rsconnect::deployApp(".", appFiles = c("app.R", "www", "stamp"))
+rsconnect::deployApp(".", appFiles = c("app.R", "www", "stamp", "renv.lock"))
 ```
 
 ## Contribute

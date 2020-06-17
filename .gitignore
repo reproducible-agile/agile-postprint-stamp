@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+rsconnect/shinyapps.io/
+
+www/*.pdf
+
+README.html

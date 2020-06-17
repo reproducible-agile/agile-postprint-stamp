@@ -1,0 +1,58 @@
+---
+params:
+    year: 2003
+output: pdf_document
+geometry: margin=1cm
+classoption: a4paper
+---
+
+```{r setup, include=FALSE, echo=FALSE}
+places <- list(
+  "2019" = "Limassol (Cyrpus)",
+  "2018" = "Lund (Sweden)",
+  "2017" = "Wageningen (The Netherlands)",
+  "2016" = "Helsinki (Finland)",
+  "2015" = "Lisboa (Portugal)",
+  "2014" = "Castellon (Spain)",
+  "2013" = "Leuven (Belgium)",
+  "2012" = "Avignon (France)",
+  "2011" = "Utrecht (The Netherlands)",
+  "2010" = "Guimarães (Portugal)",
+  "2009" = "Hannover (Germany)",
+  "2008" = "Girona (Spain)",
+  "2007" = "Aalborg (Denmark)",
+  "2006" = "Visegrad (Hungary)",
+  "2005" = "Estoril (Portugal)",
+  "2004" = "Crete (Greece)",
+  "2003" = "Lyon (France)",
+  "2002" = "Mallorca (Spain)",
+  "2001" = "Brno (Czech Republic)",
+  "2000" = "Helsinki (Suomi Finland)",
+  "1999" = "Roma (Italy)",
+  "1998" = "Enschede (The Netherlands)"
+)
+
+library("toOrdinal")
+
+conf_number <- toOrdinal(params$year - 1997)
+conf_place <- places[[as.character(params$year)]]
+conf_url <- if (params$year > 2002) {
+  paste0("https://agile-online.org/conference/proceedings/proceedings-", params$year)
+} else {
+  "https://agile-online.org/conference/proceedings/"
+}
+```
+
+\scriptsize
+\centering
+
+\fboxrule.1em\fboxsep0.5em
+\fcolorbox{black}{black!10}{
+\begin{minipage}{8cm}
+Article peer-reviewed and presented as a short paper at the \textbf{`r conf_number` AGILE International Conference on Geographic Information Science}, `r params$year`, in `r conf_place`. \\
+\\
+\tiny
+\href{`r conf_url`}{`r conf_url`}
+
+\end{minipage}
+}
