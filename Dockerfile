@@ -64,6 +64,11 @@ COPY run.R run.R
 COPY stamp/* stamp/
 COPY www/ www/
 
+LABEL org.label-schema.license="GPL-3.0" \
+      org.label-schema.vcs-url="https://github.com/reproducible-agile/agile-postprint-stamp" \
+      org.label-schema.vendor="Reproducible AGILE" \
+      maintainer="Daniel Nüst <daniel.nuest@uni-muenster.de>"
+
 ENV PORT=8080
 
 CMD ["/usr/bin/R", "--no-save", "--gui-none", "-f /app/run.R"]
