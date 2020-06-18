@@ -51,7 +51,7 @@ ui <- fluidPage(
   
   p(
     "Please report issues at ", shiny::a("https://github.com/reproducible-agile/agile-postprint-stamp/issues", href = "https://github.com/reproducible-agile/agile-postprint-stamp/issues"),
-    "This tool is provided 'as-is'."
+    ". This tool is provided 'as-is'."
   ),
   
   shiny::hr(),
@@ -71,7 +71,9 @@ ui <- fluidPage(
       shiny::p("4. Upload the PDF to a suitable repository, be sure to include a link to ",
                shiny::a("the main proceedings page", href = "https://agile-online.org/conference/proceedings"),
                "so that moderators or editors of the repository can easily find the permission statement."),
-      shiny::p("5. Share the proper preprint citation with your professional network (including the DOI!) and include the DOI in future references to your article.")
+      shiny::p("5. Share the proper preprint citation with your professional network (including the ",
+               shiny::a("DOI", href="https://en.wikipedia.org/wiki/DOI"),
+               "!) and include the DOI in future references to your article.")
     ),
     
     # Show the processed PDF
