@@ -4,7 +4,6 @@ library("shiny")
 library("qpdf")
 library("fs")
 library("stringr")
-library("rmarkdown")
 
 button_text <- "Download and process PDF"
 
@@ -107,17 +106,18 @@ server <- function(input, output) {
         input_file <- get_agile_paper(url = input$paper_url)
         shiny::setProgress(0.4, paste0("Retrieved file from ", input$paper_url))
         
-        # create overlay PDF
+        # get overlay PDF
         paper_year <- get_agile_year(input$paper_url)
-        shiny::setProgress(0.6, paste0("Creating overlay file for year ", paper_year))
-        overlay_pdf <- tempfile(fileext = ".pdf")
-        rmarkdown::render(input = "stamp/stamp.Rmd", output_file = overlay_pdf,
-                          params = list("year" = paper_year))
-        shiny::setProgress(0.6, "Overlay ready")
+        overlay_pdf <- file.path("stamp", paste0(paper_year, ".pdf"))
+        shiny::setProgress(0.6, paste0("Using overlay file ", overlay_pdf))
         
-        output_file <- tempfile(pattern = paste0(fs::path_ext_remove(fs::path_file(input$paper_url)), "_overlay"),
-                                tmpdir = "www",
-                                fileext = ".pdf")
+        output_file <- tempfile(pattern = paste0(
+          stringr::str_replace_all(fs::path_ext_remove(fs::path_file(input$paper_url)), 
+                                   pattern = "%20",
+                                   replacement = "_"),
+          "_overlay"),
+          tmpdir = "www",
+          fileext = ".pdf")
         qpdf_cli_overlay(overlay = overlay_pdf, base = input_file, output = output_file)
         shiny::setProgress(0.8, "Overlay done")
         

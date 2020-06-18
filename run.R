@@ -1,10 +1,12 @@
-# https://github.com/virtualstaticvoid/heroku-buildpack-r#shiny-applications
-library(shiny)
+# https://github.com/reproducible-agile/agile-postprint-stamp
 
-port <- Sys.getenv('PORT')
+# based on https://github.com/virtualstaticvoid/heroku-buildpack-r#shiny-applications
+library("shiny")
+
+port <- Sys.getenv("PORT")
 
 shiny::runApp(
   appDir = getwd(),
-  host = '0.0.0.0',
+  host = "0.0.0.0",
   port = as.numeric(port)
 )

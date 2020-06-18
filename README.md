@@ -2,28 +2,38 @@
 
 [Shiny](https://shiny.rstudio.com/) application for adding a textbox to the first page of an AGILE short paper, so it can be uploaded to public preprint servers or institional repositories.
 
-<!--
 ## Use app online
 
-👉👉 **https://dnlnst.shinyapps.io/agile-postprint-stamp/** 👈👈
--->
+👉👉 **https://agile-postprint-stamp.herokuapp.com/** 👈👈
 
-<img src="agile-postprint-stamp.png" title="Application screenshot" width="50%" />
+<a href="https://agile-postprint-stamp.herokuapp.com/"><img src="agile-postprint-stamp.png" title="Application screenshot" width="50%" /></a>
 
 ## Use app locally
 
 1. Clone the repositoy
-2. Open `app.R` in RStudio
-3. Click "Run App"
+2. Generate the stamps for all years by running `R -f stamps.R`
+3. Open `app.R` in RStudio
+4. Click "Run App"
+
+In R:
 
 ```r
-git2r::clone("reproducible-agile/agile-postprint-stamp")
-shiny::runApp("agile-postprint-stamp")
+git2r::clone("reproducible-agile/agile-postprint-stamp", local_path = ".")
+renv::restore()
+source("stamps.R")
+shiny::runApp()
 ```
 
 The project's dependencies are pinned in the [`renv.lock`](https://rstudio.github.io/renv/articles/lockfile.html) file.
 
-## Deploy app - WORK IN PROGRESS
+## Use container locally
+
+```bash
+docker build --tag agile-postprint-stamp:local .
+docker run -it --rm -p "8080:8080" agile-postprint-stamp:local
+```
+
+## Deploy app
 
 ### Heroku
 
@@ -32,18 +42,12 @@ The project's dependencies are pinned in the [`renv.lock`](https://rstudio.githu
   - `Dockerfile`
   - `heroku.yml`
   - `run.R`
-- Create new app on Heroku
+- Create new app on Heroku (or use Heroku CLI) named `agile-postprint-stamp`
 - Connect app to GitHub
-- Add `https://github.com/virtualstaticvoid/heroku-docker-r` buildpack in app settings
+- Activate the container stack with the Heroku CLI: `heroku stack:set container --app agile-postprint-stamp`
 - Deploy `heroku` main branch, automatically
 
-
-Test locally
-
-```bash
-docker build --tag agile-postprint-stamp:local .
-docker run -it --rm -p "8080:8080" agile-postprint-stamp:local
-```
+You should test the container locally before you deploy, see above.
 
 ### Shinyapps.io
 
