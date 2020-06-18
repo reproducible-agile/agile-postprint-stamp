@@ -50,6 +50,8 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && echo '.libPaths(c("/app/R/site-library", .libPaths()))' >> /etc/R/Rprofile.site \
   && mkdir -p /app/R/site-library
 
+RUN /usr/bin/R --no-save --quiet --slave -e "install.packages('tinytex'); tinytex::install_tinytex()"
+
 WORKDIR /app
 
 COPY renv.lock .
@@ -57,7 +59,6 @@ COPY renv/activate.R ./renv/activate.R
 COPY .Rprofile .
 
 RUN /usr/bin/R --no-save --quiet --slave -e 'renv::restore()'
-RUN /usr/bin/R --no-save --quiet --slave -e "tinytex::install_tinytex()"
 
 COPY app.R app.R
 COPY run.R run.R
