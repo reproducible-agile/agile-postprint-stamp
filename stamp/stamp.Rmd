@@ -4,6 +4,8 @@ params:
 output: pdf_document
 geometry: margin=1cm
 classoption: a4paper
+header-includes:
+  - \usepackage{xcolor}
 ---
 
 ```{r setup, include=FALSE, echo=FALSE}
@@ -46,8 +48,9 @@ conf_url <- if (params$year > 2002) {
 \scriptsize
 \centering
 
+<!-- based on https://tex.stackexchange.com/questions/196197/setting-background-color-of-minipage-without-overflow -->
 \fboxrule.1em\fboxsep0.5em
-\fcolorbox{black}{black!10}{
+\fcolorbox{gray}{black!10}{
 \begin{minipage}{8cm}
 Article peer-reviewed and presented as a short paper at the \textbf{`r conf_number` AGILE International Conference on Geographic Information Science}, `r params$year`, in `r conf_place`. \\
 \\
