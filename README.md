@@ -34,7 +34,16 @@ The project's dependencies are pinned in the [`renv.lock`](https://rstudio.githu
   - `run.R`
 - Create new app on Heroku
 - Connect app to GitHub
+- Add `https://github.com/virtualstaticvoid/heroku-docker-r` buildpack in app settings
 - Deploy `heroku` main branch, automatically
+
+
+Test locally
+
+```bash
+docker build --tag agile-postprint-stamp:local .
+docker run -it --rm -p "8080:8080" agile-postprint-stamp:local
+```
 
 ### Shinyapps.io
 
