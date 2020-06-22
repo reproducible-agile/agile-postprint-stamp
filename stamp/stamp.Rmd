@@ -49,13 +49,12 @@ conf_url <- if (params$year > 2002) {
 \centering
 
 <!-- based on https://tex.stackexchange.com/questions/196197/setting-background-color-of-minipage-without-overflow -->
-\fboxrule.1em\fboxsep0.5em
+\fboxrule0.1em\fboxsep0.5em
 \fcolorbox{gray}{black!10}{
-\begin{minipage}{8cm}
-Article peer-reviewed and presented as a short paper at the \textbf{`r conf_number` AGILE International Conference on Geographic Information Science}, `r params$year`, in `r conf_place`. \\
-\\
-\tiny
-\href{`r conf_url`}{`r conf_url`}
-
+\begin{minipage}{10cm}
+Peer-reviewed short paper at the \textbf{`r conf_number` AGILE International Conference on Geographic Information Science} `r params$year` in `r conf_place`. \\
+\tiny\raggedright
+Conference proceedings: \href{`r conf_url`}{`r conf_url`} \\
+Self-archived with permission: \href{https://agile-online.org/conference/proceedings}{https://agile-online.org/conference/proceedings}
 \end{minipage}
 }
