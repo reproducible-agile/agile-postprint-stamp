@@ -2,9 +2,9 @@
 
 [Shiny](https://shiny.rstudio.com/) application for adding a textbox to the first page of an AGILE short paper, so it can be uploaded to public preprint servers or institional repositories.
 
-## Use app online
+## ~~Use app online~~
 
-👉👉 **https://agile-postprint-stamp.herokuapp.com/** 👈👈
+_There currently is no online deployment of this app._
 
 <a href="https://agile-postprint-stamp.herokuapp.com/"><img src="agile-postprint-stamp.png" title="Application screenshot" width="50%" /></a>
 
